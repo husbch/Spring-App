@@ -17,28 +17,28 @@ pipeline {
         stage('Build') {
             steps {
                 sh './gradlew build'
-                sh 'docker build -t registry.infosyssolusiterpadu.com/learning/spring-app:${env.BUILD_ID} .'
+                sh 'docker build -t registry.infosyssolusiterpadu.com/learning/spring-app .'
             }
         }
         
         stage('Push') {
             steps {
                 sh 'docker login registry.infosyssolusiterpadu.com -u Husni -p Husnibakrie1'
-                sh 'docker push registry.infosyssolusiterpadu.com/learning/spring-app:2'
+                sh 'docker push registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
         
         stage('Stage') {
             steps {
                 sh '${remStage} docker rm -f spring-app'
-                sh '${remStage} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app:2'
+                sh '${remStage} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
         
         stage('Production') {
             steps {
                 sh '${remProduction} docker rm -f spring-app'
-                sh '${remProduction} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app:2'
+                sh '${remProduction} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
     }
