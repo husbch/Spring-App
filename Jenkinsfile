@@ -17,13 +17,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh './gradlew build'
-                sh 'docker login registry.infosyssolusiterpadu.com -u Husni -p Husnibakrie1'
                 sh 'docker build -t registry.infosyssolusiterpadu.com/learning/spring-app .'
             }
         }
         
         stage('Push') {
             steps {
+                sh 'docker login registry.infosyssolusiterpadu.com -u Husni -p Husnibakrie1'
                 sh 'docker push registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
