@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh './gradlew build'
-                sh 'docker build -t registry.infosyssolusiterpadu.com/learning/spring-app:2 .'
+                sh 'docker build -t registry.infosyssolusiterpadu.com/learning/spring-app:${env.BUILD_ID} .'
             }
         }
         
