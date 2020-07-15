@@ -30,15 +30,17 @@ pipeline {
         
         stage('Stage') {
             steps {
+                sh '${remStage} docker rm -f spring-app'
                 sh '${remStage} docker image rm registry.infosyssolusiterpadu.com/learning/spring-app'
-                sh '${remStage} docker run --rm --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
+                sh '${remStage} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
         
         stage('Production') {
             steps {
+                sh '${remProduction} docker rm -f spring-app'
                 sh '${remProduction} docker image rm registry.infosyssolusiterpadu.com/learning/spring-app'
-                sh '${remProduction} docker --rm run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
+                sh '${remProduction} docker run --name spring-app -dit -p 2020:8080 registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
     }
