@@ -23,7 +23,7 @@ pipeline {
         
         stage('Push') {
             steps {
-                sh 'docker login registry.infosyssolusiterpadu.com -u Husni -p Husnibakrie1'
+                sh 'docker login registry.infosyssolusiterpadu.com -u Husni -p xxxxxxxx'
                 sh 'docker push registry.infosyssolusiterpadu.com/learning/spring-app'
             }
         }
