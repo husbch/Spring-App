@@ -1,10 +1,11 @@
+
 FROM ubuntu:18.04
 
 MAINTAINER Husni
 
 RUN apt update && apt upgrade -y && apt install -y dnsutils curl openjdk-8-jre
 
-RUN dig +short myip.opendns.com @resolver1.opendns.com > tmp_ip
+RUN curl ifconfig.me > tmp_ip
 
 ARG JAR_FILE=build/libs/*.jar
 
