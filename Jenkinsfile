@@ -3,8 +3,8 @@ pipeline {
     agent any
     
     environment {
-        remStage = "sshpass -p admin ssh root@34.87.128.241"
-        remProduction = "sshpass -p admin ssh root@35.247.166.245"
+        remStage = "sshpass -p xxxxx ssh root@xxx.xxx.xxx.xxx"
+        remProduction = "sshpass -p xxxxx ssh root@xxx.xxx.xxx.xxx"
     }
     
     stages {
