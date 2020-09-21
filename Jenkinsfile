@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'master', credentialsId: 'cred-gitlab', url: 'https://git.infosyssolusiterpadu.com/learning/learning-husni.git'
+                git branch: 'master', credentialsId: 'cred-gitlab', url: 'https://git.xxxxxxxxxxx.com/learning/learning-husni.git'
             }
         }
         
